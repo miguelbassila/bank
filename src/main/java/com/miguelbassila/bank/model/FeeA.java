@@ -5,8 +5,8 @@ import java.math.BigDecimal;
 public class FeeA implements Fee {
 
   public BigDecimal calculate(Transfer transfer) {
-    BigDecimal fee = transfer.getAmmount();
-    fee = fee.multiply(BigDecimal.valueOf(0.03)).add(BigDecimal.valueOf(2));
+    BigDecimal amount = transfer.getAmmount();
+    BigDecimal fee = amount.multiply(BigDecimal.valueOf(0.03)).add(BigDecimal.valueOf(2.00));
     
     return fee;
   }

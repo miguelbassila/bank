@@ -14,11 +14,11 @@ public class FeeB implements Fee {
     
     long days = calculateDays(today, dateSchedule); 
     
-    if (days >=30){
-      return BigDecimal.valueOf(10);
+    if (days <=30){
+      return new BigDecimal(10.00);
     }
     
-    return BigDecimal.valueOf(8);
+    return new BigDecimal(8.00);
   }
 
   private long calculateDays(Calendar today, Calendar dateSchedule) {
