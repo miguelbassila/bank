@@ -7,13 +7,13 @@ public class Transfer {
   
   private Account originAccount;
   private Account destinationAccount;
-  private BigDecimal ammount;
+  private BigDecimal amount;
   private Calendar dateSchedule;
 
-  public Transfer (Account originAccount, Account destinationAccount, BigDecimal ammount, Calendar dateSchedule){
+  public Transfer (Account originAccount, Account destinationAccount, BigDecimal amount, Calendar dateSchedule){
     this.originAccount = originAccount;
     this.destinationAccount = destinationAccount;
-    this.ammount = ammount;
+    this.amount = amount;
     this.dateSchedule = dateSchedule;
   }
 
@@ -26,17 +26,16 @@ public class Transfer {
   }
 
   public BigDecimal getAmmount() {
-    return ammount;
+    return amount;
   }
 
   public Calendar getDateSchedule() {
     return dateSchedule;
   }
   
-  public void calculateFee (Transfer transfer, Fee fee){
-    
+  public BigDecimal calculateFee (Transfer transfer, Fee fee){
+    BigDecimal feeReturn = fee.calculate(transfer);
+    return feeReturn;
   }
-  
-  
 
 }
