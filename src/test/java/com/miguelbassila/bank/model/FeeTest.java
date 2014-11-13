@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import java.math.BigDecimal;
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -29,7 +30,31 @@ public class FeeTest {
     
     BigDecimal feeCalculated = transfer.calculateFee(transfer,fee);
     
-    assertEquals("", new BigDecimal("8.00"), feeCalculated); 
+    assertEquals("Fee should be 8.00", new BigDecimal("8.00"), feeCalculated); 
+  }
+  
+  @Test
+  public void shouldCalculteFeeBLessThan30Days() {
+    FeeB fee = new FeeB();
+    
+    Calendar daySchedule = new GregorianCalendar(2014, 10, 20);
+    transfer = new Transfer(originAccount, destinationAccount, new BigDecimal(200.00), daySchedule);
+    
+    BigDecimal feeCalculated = transfer.calculateFee(transfer, fee);
+    
+    assertEquals("Fee should be 10", new BigDecimal(10.00), feeCalculated);
+  }
+  
+  @Test
+  public void shouldCalculteFeeBGreaterThan30Days() {
+    FeeB fee = new FeeB();
+    
+    Calendar daySchedule = new GregorianCalendar(2015, 0, 20);
+    transfer = new Transfer(originAccount, destinationAccount, new BigDecimal(200.00), daySchedule);
+    
+    BigDecimal feeCalculated = transfer.calculateFee(transfer, fee);
+    
+    assertEquals("Fee should be 8", new BigDecimal(8.00), feeCalculated);
   }
 
 }
