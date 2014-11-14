@@ -3,6 +3,7 @@ package com.miguelbassila.bank.model;
 import static org.junit.Assert.*;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
@@ -42,7 +43,7 @@ public class FeeTest {
     
     BigDecimal feeCalculated = transfer.calculateFee(transfer, fee);
     
-    assertEquals("Fee should be 10", new BigDecimal(10.00), feeCalculated);
+    assertEquals("Fee should be 10", new BigDecimal(10.00).setScale(2, RoundingMode.CEILING), feeCalculated);
   }
   
   @Test
@@ -54,7 +55,7 @@ public class FeeTest {
     
     BigDecimal feeCalculated = transfer.calculateFee(transfer, fee);
     
-    assertEquals("Fee should be 8", new BigDecimal(8.00), feeCalculated);
+    assertEquals("Fee should be 8", new BigDecimal(8.00).setScale(2, RoundingMode.CEILING), feeCalculated);
   }
   
   @Test
