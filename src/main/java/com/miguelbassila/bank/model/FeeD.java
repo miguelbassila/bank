@@ -1,21 +1,25 @@
 package com.miguelbassila.bank.model;
 
 import java.math.BigDecimal;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
 
 public class FeeD implements Fee {
 
   public BigDecimal calculate(Transfer transfer) {
-  
-    if (transfer.getAmount().c <= 25000){
-      calculate with fee A
-    } else if (amount > 25000 && amount <= 120.000){
-      calculate with fee B
+    
+    Fee fee;
+    
+    if (transfer.getAmount().compareTo(BigDecimal.valueOf(25001)) == -1){
+      fee = new FeeA();
+      
+    } else if (transfer.getAmount().compareTo(BigDecimal.valueOf(25000)) == 1 && 
+               transfer.getAmount().compareTo(BigDecimal.valueOf(120001)) == -1){
+      fee = new FeeB();
+      
     } else {
-      calculate with fee C
+      fee = new FeeC();
+      
     }
     
-    return new BigDecimal(0);
+    return fee.calculate(transfer);
   }
  }

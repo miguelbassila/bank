@@ -141,5 +141,41 @@ public class FeeTest {
     BigDecimal feeCalculated = transfer.calculateFee(transfer, fee);
     assertEquals("Fee should be 16.60", new BigDecimal("16.60"), feeCalculated);
   }
+  
+  @Test 
+  public void shouldCalculateFeeDUsingFeeA() {
+    FeeD fee = new FeeD();
+    
+    Calendar today = Calendar.getInstance();
+    transfer = new Transfer(originAccount, destinationAccount, new BigDecimal(200.00), today);
+    
+    BigDecimal feeCalculated = transfer.calculateFee(transfer,fee);
+    
+    assertEquals("Fee should be 8.00", new BigDecimal("8.00"), feeCalculated); 
+  }
+  
+  @Test 
+  public void shouldCalculateFeeDUsingFeeB() {
+    FeeD fee = new FeeD();
+    
+    Calendar today = Calendar.getInstance();
+    transfer = new Transfer(originAccount, destinationAccount, new BigDecimal(80000.00), today);
+    
+    BigDecimal feeCalculated = transfer.calculateFee(transfer,fee);
+    
+    assertEquals("Fee should be 10.00", new BigDecimal("10.00"), feeCalculated); 
+  }
+  
+  @Test 
+  public void shouldCalculateFeeDUsingFeeC() {
+    FeeD fee = new FeeD();
+    
+    Calendar today = Calendar.getInstance();
+    transfer = new Transfer(originAccount, destinationAccount, new BigDecimal(150000.00), today);
+    
+    BigDecimal feeCalculated = transfer.calculateFee(transfer,fee);
+    
+    assertEquals("Fee should be 10.00", new BigDecimal("12450.00"), feeCalculated); 
+  }
 
 }
