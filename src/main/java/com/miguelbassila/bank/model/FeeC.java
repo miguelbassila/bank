@@ -1,44 +1,33 @@
 package com.miguelbassila.bank.model;
 
 import java.math.BigDecimal;
-import java.time.Duration;
-import java.time.Instant;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
 
-public class FeeC implements Fee {
+public class FeeC extends ConditionalFee {
 
-  public BigDecimal calculate(Transfer transfer) {
-    Calendar dateSchedule = transfer.getDateSchedule();
-    Calendar today = GregorianCalendar.getInstance();
+  @Override
+  public BigDecimal feeByDays(long days, Transfer transfer) {
     
-    long days = calculateDays(today, dateSchedule); 
+    BigDecimal amount = transfer.getAmount();
     
     if (days > 30){
-      1.2%;
+      return multiplyAmountByPercentual(amount, 0.012);
     } else if (days > 25 || days <= 30) {
-      2.1%;
+      return multiplyAmountByPercentual(amount, 0.021);
     } else if (days > 20 || days <= 25) {
-      4.3%;
+      return multiplyAmountByPercentual(amount, 0.043);
     } else if (days > 15 || days <= 20) {
-      5.4%;
+      return multiplyAmountByPercentual(amount, 0.054);
     } else if (days > 10 || days <= 15) {
-      6.7%;
+      return multiplyAmountByPercentual(amount, 0.067);
     } else if (days > 5 || days <= 10) {
-      7.4%;
+      return multiplyAmountByPercentual(amount, 0.074);
     }
     
-    return 8.3%;
+    return multiplyAmountByPercentual(amount, 0.083);
   }
   
-  private long calculateDays(Calendar today, Calendar dateSchedule) {
-    
-    Instant instantToday = today.toInstant();
-    Instant instantDateSchedule = dateSchedule.toInstant();
-    
-    Duration duration = Duration.between(instantToday, instantDateSchedule);
-    
-    return duration.toDays();
+  private BigDecimal multiplyAmountByPercentual(BigDecimal amount, double percentual) {
+    return amount.multiply(BigDecimal.valueOf(percentual));
   }
 
 }

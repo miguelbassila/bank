@@ -1,34 +1,16 @@
 package com.miguelbassila.bank.model;
 
 import java.math.BigDecimal;
-import java.time.Duration;
-import java.time.Instant;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
 
-public class FeeB implements Fee {
+public class FeeB extends ConditionalFee {
 
-  public BigDecimal calculate(Transfer transfer) {
-    Calendar dateSchedule = transfer.getDateSchedule();
-    Calendar today = GregorianCalendar.getInstance();
-    
-    long days = calculateDays(today, dateSchedule); 
-    
+  @Override
+  public BigDecimal feeByDays(long days, Transfer transfer) {
     if (days <=30){
       return new BigDecimal(10.00);
     }
     
     return new BigDecimal(8.00);
-  }
-
-  private long calculateDays(Calendar today, Calendar dateSchedule) {
-    
-    Instant instantToday = today.toInstant();
-    Instant instantDateSchedule = dateSchedule.toInstant();
-    
-    Duration duration = Duration.between(instantToday, instantDateSchedule);
-    
-    return duration.toDays();
   }
 
 }
