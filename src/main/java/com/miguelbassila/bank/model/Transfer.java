@@ -25,7 +25,7 @@ public class Transfer {
     return destinationAccount;
   }
 
-  public BigDecimal getAmmount() {
+  public BigDecimal getAmount() {
     return amount;
   }
 
