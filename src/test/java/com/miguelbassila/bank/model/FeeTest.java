@@ -34,7 +34,7 @@ public class FeeTest {
   }
   
   @Test
-  public void shouldCalculteFeeBLessThan30Days() {
+  public void shouldCalculateFeeBLessThan30Days() {
     FeeB fee = new FeeB();
     
     Calendar daySchedule = new GregorianCalendar(2014, 10, 20);
@@ -46,7 +46,7 @@ public class FeeTest {
   }
   
   @Test
-  public void shouldCalculteFeeBGreaterThan30Days() {
+  public void shouldCalculateFeeBGreaterThan30Days() {
     FeeB fee = new FeeB();
     
     Calendar daySchedule = new GregorianCalendar(2015, 0, 20);
@@ -55,6 +55,90 @@ public class FeeTest {
     BigDecimal feeCalculated = transfer.calculateFee(transfer, fee);
     
     assertEquals("Fee should be 8", new BigDecimal(8.00), feeCalculated);
+  }
+  
+  @Test
+  public void shouldCalculateFeeCGreaterThan30Days() {
+    FeeC fee = new FeeC();
+    
+    Calendar daySchedule = new GregorianCalendar();
+    daySchedule.add(Calendar.DATE, 35);
+    transfer = new Transfer(originAccount, destinationAccount, new BigDecimal(200.00), daySchedule);
+    
+    BigDecimal feeCalculated = transfer.calculateFee(transfer, fee);
+    assertEquals("Fee should be 2.4", new BigDecimal("2.40"), feeCalculated);
+  }
+  
+  @Test
+  public void shouldCalculateFeeCGreaterThan25DaysLessThan30Days() {
+    FeeC fee = new FeeC();
+    
+    Calendar daySchedule = new GregorianCalendar();
+    daySchedule.add(Calendar.DATE, 27);
+    transfer = new Transfer(originAccount, destinationAccount, new BigDecimal(200.00), daySchedule);
+    
+    BigDecimal feeCalculated = transfer.calculateFee(transfer, fee);
+    assertEquals("Fee should be 4.20", new BigDecimal("4.20"), feeCalculated);
+  }
+  
+  @Test
+  public void shouldCalculateFeeCGreaterThan20DaysLessThan25Days() {
+    FeeC fee = new FeeC();
+    
+    Calendar daySchedule = new GregorianCalendar();
+    daySchedule.add(Calendar.DATE, 23);
+    transfer = new Transfer(originAccount, destinationAccount, new BigDecimal(200.00), daySchedule);
+    
+    BigDecimal feeCalculated = transfer.calculateFee(transfer, fee);
+    assertEquals("Fee should be 8.60", new BigDecimal("8.60"), feeCalculated);
+  }
+  
+  @Test
+  public void shouldCalculateFeeCGreaterThan15DaysLessThan20Days() {
+    FeeC fee = new FeeC();
+    
+    Calendar daySchedule = new GregorianCalendar();
+    daySchedule.add(Calendar.DATE, 18);
+    transfer = new Transfer(originAccount, destinationAccount, new BigDecimal(200.00), daySchedule);
+    
+    BigDecimal feeCalculated = transfer.calculateFee(transfer, fee);
+    assertEquals("Fee should be 10.80", new BigDecimal("10.80"), feeCalculated);
+  }
+  
+  @Test
+  public void shouldCalculateFeeCGreaterThan10DaysLessThan15Days() {
+    FeeC fee = new FeeC();
+    
+    Calendar daySchedule = new GregorianCalendar();
+    daySchedule.add(Calendar.DATE, 13);
+    transfer = new Transfer(originAccount, destinationAccount, new BigDecimal(200.00), daySchedule);
+    
+    BigDecimal feeCalculated = transfer.calculateFee(transfer, fee);
+    assertEquals("Fee should be 13.40", new BigDecimal("13.40"), feeCalculated);
+  }
+  
+  @Test
+  public void shouldCalculateFeeCGreaterThan5DaysLessThan10Days() {
+    FeeC fee = new FeeC();
+    
+    Calendar daySchedule = new GregorianCalendar();
+    daySchedule.add(Calendar.DATE, 8);
+    transfer = new Transfer(originAccount, destinationAccount, new BigDecimal(200.00), daySchedule);
+    
+    BigDecimal feeCalculated = transfer.calculateFee(transfer, fee);
+    assertEquals("Fee should be 14.80", new BigDecimal("14.80"), feeCalculated);
+  }
+  
+  @Test
+  public void shouldCalculateFeeCLessThan5Days() {
+    FeeC fee = new FeeC();
+    
+    Calendar daySchedule = new GregorianCalendar();
+    daySchedule.add(Calendar.DATE, 3);
+    transfer = new Transfer(originAccount, destinationAccount, new BigDecimal(200.00), daySchedule);
+    
+    BigDecimal feeCalculated = transfer.calculateFee(transfer, fee);
+    assertEquals("Fee should be 16.60", new BigDecimal("16.60"), feeCalculated);
   }
 
 }
