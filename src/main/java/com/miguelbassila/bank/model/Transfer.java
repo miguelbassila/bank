@@ -34,8 +34,7 @@ public class Transfer {
   }
   
   public BigDecimal calculateFee (Transfer transfer, Fee fee){
-    BigDecimal feeReturn = fee.calculate(transfer);
-    return feeReturn;
+    return fee.calculate(transfer);
   }
 
 }
