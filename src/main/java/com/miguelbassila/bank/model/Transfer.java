@@ -44,6 +44,14 @@ public class Transfer {
   }
   
   public void send(){
+    verifyAmount();
+    
+    this.originAccount.withdraw(this.amount);
+    this.destinationAccount.deposit(this.amount);
+    this.originAccount.withdraw(calculateFee());
+  }
+
+  private void verifyAmount() {
     if (this.amount.compareTo(this.originAccount.getBalance()) == 1){
       throw new IllegalArgumentException("Amount can not be greater than balance");
     }
@@ -55,10 +63,6 @@ public class Transfer {
     if (this.amount.compareTo(BigDecimal.ZERO) == 0) {
       throw new IllegalArgumentException("Amount can not be zero");
     }
-    
-    this.originAccount.withdraw(this.amount);
-    this.destinationAccount.deposit(this.amount);
-    this.originAccount.withdraw(calculateFee());
   }
 
 }
