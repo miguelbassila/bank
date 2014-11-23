@@ -1,6 +1,7 @@
 package com.miguelbassila.bank.model;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 public class Account {
   
@@ -17,7 +18,7 @@ public class Account {
   }
 
   public BigDecimal getBalance() {
-    return balance;
+    return balance.setScale(2, RoundingMode.CEILING);
   }
   
   public void deposit(BigDecimal amount){
