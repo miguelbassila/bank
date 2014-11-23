@@ -39,8 +39,14 @@ public class Transfer {
     return dateSchedule;
   }
 
-  public BigDecimal calculateFee (){
+  public BigDecimal calculateFee(){
     return fee.calculate(this);
+  }
+  
+  public void confirm(){
+    this.originAccount.withdraw(this.amount);
+    this.destinationAccount.deposit(this.amount);
+    this.originAccount.withdraw(calculateFee());
   }
 
 }
