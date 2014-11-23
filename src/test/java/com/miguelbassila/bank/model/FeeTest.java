@@ -27,9 +27,9 @@ public class FeeTest {
     FeeA fee = new FeeA();
     
     Calendar today = Calendar.getInstance();
-    transfer = new Transfer(originAccount, destinationAccount, new BigDecimal(200.00), today);
+    transfer = new Transfer(originAccount, destinationAccount, new BigDecimal(200.00), fee, today);
     
-    BigDecimal feeCalculated = transfer.calculateFee(transfer,fee);
+    BigDecimal feeCalculated = transfer.calculateFee();
     
     assertEquals("Fee should be 8.00", new BigDecimal("8.00"), feeCalculated); 
   }
@@ -39,9 +39,9 @@ public class FeeTest {
     FeeB fee = new FeeB();
     
     Calendar daySchedule = new GregorianCalendar(2014, 10, 20);
-    transfer = new Transfer(originAccount, destinationAccount, new BigDecimal(200.00), daySchedule);
+    transfer = new Transfer(originAccount, destinationAccount, new BigDecimal(200.00), fee, daySchedule);
     
-    BigDecimal feeCalculated = transfer.calculateFee(transfer, fee);
+    BigDecimal feeCalculated = transfer.calculateFee();
     
     assertEquals("Fee should be 10", new BigDecimal(10.00).setScale(2, RoundingMode.CEILING), feeCalculated);
   }
@@ -51,9 +51,9 @@ public class FeeTest {
     FeeB fee = new FeeB();
     
     Calendar daySchedule = new GregorianCalendar(2015, 0, 20);
-    transfer = new Transfer(originAccount, destinationAccount, new BigDecimal(200.00), daySchedule);
+    transfer = new Transfer(originAccount, destinationAccount, new BigDecimal(200.00), fee, daySchedule);
     
-    BigDecimal feeCalculated = transfer.calculateFee(transfer, fee);
+    BigDecimal feeCalculated = transfer.calculateFee();
     
     assertEquals("Fee should be 8", new BigDecimal(8.00).setScale(2, RoundingMode.CEILING), feeCalculated);
   }
@@ -64,9 +64,9 @@ public class FeeTest {
     
     Calendar daySchedule = new GregorianCalendar();
     daySchedule.add(Calendar.DATE, 35);
-    transfer = new Transfer(originAccount, destinationAccount, new BigDecimal(200.00), daySchedule);
+    transfer = new Transfer(originAccount, destinationAccount, new BigDecimal(200.00), fee, daySchedule);
     
-    BigDecimal feeCalculated = transfer.calculateFee(transfer, fee);
+    BigDecimal feeCalculated = transfer.calculateFee();
     assertEquals("Fee should be 2.4", new BigDecimal("2.40"), feeCalculated);
   }
   
@@ -76,9 +76,9 @@ public class FeeTest {
     
     Calendar daySchedule = new GregorianCalendar();
     daySchedule.add(Calendar.DATE, 27);
-    transfer = new Transfer(originAccount, destinationAccount, new BigDecimal(200.00), daySchedule);
+    transfer = new Transfer(originAccount, destinationAccount, new BigDecimal(200.00), fee, daySchedule);
     
-    BigDecimal feeCalculated = transfer.calculateFee(transfer, fee);
+    BigDecimal feeCalculated = transfer.calculateFee();
     assertEquals("Fee should be 4.20", new BigDecimal("4.20"), feeCalculated);
   }
   
@@ -88,9 +88,9 @@ public class FeeTest {
     
     Calendar daySchedule = new GregorianCalendar();
     daySchedule.add(Calendar.DATE, 23);
-    transfer = new Transfer(originAccount, destinationAccount, new BigDecimal(200.00), daySchedule);
+    transfer = new Transfer(originAccount, destinationAccount, new BigDecimal(200.00), fee, daySchedule);
     
-    BigDecimal feeCalculated = transfer.calculateFee(transfer, fee);
+    BigDecimal feeCalculated = transfer.calculateFee();
     assertEquals("Fee should be 8.60", new BigDecimal("8.60"), feeCalculated);
   }
   
@@ -100,9 +100,9 @@ public class FeeTest {
     
     Calendar daySchedule = new GregorianCalendar();
     daySchedule.add(Calendar.DATE, 18);
-    transfer = new Transfer(originAccount, destinationAccount, new BigDecimal(200.00), daySchedule);
+    transfer = new Transfer(originAccount, destinationAccount, new BigDecimal(200.00), fee, daySchedule);
     
-    BigDecimal feeCalculated = transfer.calculateFee(transfer, fee);
+    BigDecimal feeCalculated = transfer.calculateFee();
     assertEquals("Fee should be 10.80", new BigDecimal("10.80"), feeCalculated);
   }
   
@@ -112,9 +112,9 @@ public class FeeTest {
     
     Calendar daySchedule = new GregorianCalendar();
     daySchedule.add(Calendar.DATE, 13);
-    transfer = new Transfer(originAccount, destinationAccount, new BigDecimal(200.00), daySchedule);
+    transfer = new Transfer(originAccount, destinationAccount, new BigDecimal(200.00), fee, daySchedule);
     
-    BigDecimal feeCalculated = transfer.calculateFee(transfer, fee);
+    BigDecimal feeCalculated = transfer.calculateFee();
     assertEquals("Fee should be 13.40", new BigDecimal("13.40"), feeCalculated);
   }
   
@@ -124,9 +124,9 @@ public class FeeTest {
     
     Calendar daySchedule = new GregorianCalendar();
     daySchedule.add(Calendar.DATE, 8);
-    transfer = new Transfer(originAccount, destinationAccount, new BigDecimal(200.00), daySchedule);
+    transfer = new Transfer(originAccount, destinationAccount, new BigDecimal(200.00), fee, daySchedule);
     
-    BigDecimal feeCalculated = transfer.calculateFee(transfer, fee);
+    BigDecimal feeCalculated = transfer.calculateFee();
     assertEquals("Fee should be 14.80", new BigDecimal("14.80"), feeCalculated);
   }
   
@@ -136,9 +136,9 @@ public class FeeTest {
     
     Calendar daySchedule = new GregorianCalendar();
     daySchedule.add(Calendar.DATE, 3);
-    transfer = new Transfer(originAccount, destinationAccount, new BigDecimal(200.00), daySchedule);
+    transfer = new Transfer(originAccount, destinationAccount, new BigDecimal(200.00), fee, daySchedule);
     
-    BigDecimal feeCalculated = transfer.calculateFee(transfer, fee);
+    BigDecimal feeCalculated = transfer.calculateFee();
     assertEquals("Fee should be 16.60", new BigDecimal("16.60"), feeCalculated);
   }
   
@@ -147,9 +147,9 @@ public class FeeTest {
     FeeD fee = new FeeD();
     
     Calendar today = Calendar.getInstance();
-    transfer = new Transfer(originAccount, destinationAccount, new BigDecimal(200.00), today);
+    transfer = new Transfer(originAccount, destinationAccount, new BigDecimal(200.00), fee, today);
     
-    BigDecimal feeCalculated = transfer.calculateFee(transfer,fee);
+    BigDecimal feeCalculated = transfer.calculateFee();
     
     assertEquals("Fee should be 8.00", new BigDecimal("8.00"), feeCalculated); 
   }
@@ -159,9 +159,9 @@ public class FeeTest {
     FeeD fee = new FeeD();
     
     Calendar today = Calendar.getInstance();
-    transfer = new Transfer(originAccount, destinationAccount, new BigDecimal(80000.00), today);
+    transfer = new Transfer(originAccount, destinationAccount, new BigDecimal(80000.00), fee, today);
     
-    BigDecimal feeCalculated = transfer.calculateFee(transfer,fee);
+    BigDecimal feeCalculated = transfer.calculateFee();
     
     assertEquals("Fee should be 10.00", new BigDecimal("10.00"), feeCalculated); 
   }
@@ -171,9 +171,9 @@ public class FeeTest {
     FeeD fee = new FeeD();
     
     Calendar today = Calendar.getInstance();
-    transfer = new Transfer(originAccount, destinationAccount, new BigDecimal(150000.00), today);
+    transfer = new Transfer(originAccount, destinationAccount, new BigDecimal(150000.00), fee, today);
     
-    BigDecimal feeCalculated = transfer.calculateFee(transfer,fee);
+    BigDecimal feeCalculated = transfer.calculateFee();
     
     assertEquals("Fee should be 10.00", new BigDecimal("12450.00"), feeCalculated); 
   }

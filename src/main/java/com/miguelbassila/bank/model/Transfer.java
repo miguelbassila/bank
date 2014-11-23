@@ -9,11 +9,13 @@ public class Transfer {
   private Account destinationAccount;
   private BigDecimal amount;
   private Calendar dateSchedule;
+  private Fee fee;
 
-  public Transfer (Account originAccount, Account destinationAccount, BigDecimal amount, Calendar dateSchedule){
+  public Transfer (Account originAccount, Account destinationAccount, BigDecimal amount, Fee fee, Calendar dateSchedule){
     this.originAccount = originAccount;
     this.destinationAccount = destinationAccount;
     this.amount = amount;
+    this.fee = fee;
     this.dateSchedule = dateSchedule;
   }
 
@@ -28,13 +30,17 @@ public class Transfer {
   public BigDecimal getAmount() {
     return amount;
   }
+  
+  public Fee getFee() {
+    return fee;
+  }
 
   public Calendar getDateSchedule() {
     return dateSchedule;
   }
-  
-  public BigDecimal calculateFee (Transfer transfer, Fee fee){
-    return fee.calculate(transfer);
+
+  public BigDecimal calculateFee (){
+    return fee.calculate(this);
   }
 
 }
