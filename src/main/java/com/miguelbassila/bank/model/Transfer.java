@@ -43,7 +43,19 @@ public class Transfer {
     return fee.calculate(this);
   }
   
-  public void confirm(){
+  public void send(){
+    if (this.amount.compareTo(this.originAccount.getBalance()) == 1){
+      throw new IllegalArgumentException("Amount can not be greater than balance");
+    }
+    
+    if (this.amount.compareTo(BigDecimal.ZERO) == -1) {
+      throw new IllegalArgumentException("Amount can not be negative");
+    }
+    
+    if (this.amount.compareTo(BigDecimal.ZERO) == 0) {
+      throw new IllegalArgumentException("Amount can not be zero");
+    }
+    
     this.originAccount.withdraw(this.amount);
     this.destinationAccount.deposit(this.amount);
     this.originAccount.withdraw(calculateFee());
