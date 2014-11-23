@@ -2,6 +2,7 @@ package com.miguelbassila.bank.model;
 
 import java.math.BigDecimal;
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 public class Transfer {
   
@@ -44,14 +45,23 @@ public class Transfer {
   }
   
   public void send(){
-    verifyAmount();
+    verifyAmountExceptions();
+    verifyDateExcepetion();
     
     this.originAccount.withdraw(this.amount);
     this.destinationAccount.deposit(this.amount);
     this.originAccount.withdraw(calculateFee());
   }
 
-  private void verifyAmount() {
+  private void verifyDateExcepetion() {
+    Calendar today = new GregorianCalendar();
+    
+    if (this.dateSchedule.compareTo(today) == -1){
+      throw new IllegalArgumentException("Date schedule can not be in the past");
+    }
+  }
+
+  private void verifyAmountExceptions() {
     if (this.amount.compareTo(this.originAccount.getBalance()) == 1){
       throw new IllegalArgumentException("Amount can not be greater than balance");
     }

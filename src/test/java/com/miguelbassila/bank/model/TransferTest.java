@@ -26,7 +26,8 @@ public class TransferTest {
   public void shouldTransferAndSubtractFee(){
     FeeB fee = new FeeB();
     
-    Calendar daySchedule = new GregorianCalendar(2014, 10, 20);
+    Calendar daySchedule = new GregorianCalendar();
+    
     transfer = new Transfer(originAccount, destinationAccount, new BigDecimal(200.00), fee, daySchedule);
     transfer.send();
     
@@ -35,8 +36,7 @@ public class TransferTest {
   }
   
   @Test(expected = IllegalArgumentException.class)
-  public void shouldNotTransferWhenAmountGreaterThanBalance()
-  {
+  public void shouldNotTransferWhenAmountGreaterThanBalance(){
     FeeC fee = new FeeC();
     
     Calendar daySchedule = new GregorianCalendar();
@@ -46,8 +46,7 @@ public class TransferTest {
   }
   
   @Test(expected = IllegalArgumentException.class)
-  public void shouldNotTransferWhenAmountEqualZero()
-  {
+  public void shouldNotTransferWhenAmountEqualZero(){
     FeeC fee = new FeeC();
     
     Calendar daySchedule = new GregorianCalendar();
@@ -57,8 +56,7 @@ public class TransferTest {
   }
   
   @Test(expected = IllegalArgumentException.class)
-  public void shouldNotTransferWhenAmountIsNegative()
-  {
+  public void shouldNotTransferWhenAmountIsNegative(){
     FeeC fee = new FeeC();
     
     Calendar daySchedule = new GregorianCalendar();
@@ -66,5 +64,18 @@ public class TransferTest {
     transfer = new Transfer(originAccount, destinationAccount, new BigDecimal("-200.00"), fee, daySchedule);
     transfer.send();
   }
+  
+  @Test(expected = IllegalArgumentException.class)
+  public void shouldNotTransferWhenDateScheduleIsInPast(){
+    FeeC fee = new FeeC();
+    
+    Calendar daySchedule = new GregorianCalendar();
+    daySchedule.add(Calendar.DATE, -5);
+    
+    transfer = new Transfer(originAccount, destinationAccount, new BigDecimal(200.00), fee, daySchedule);
+    transfer.send();
+  }
+  
+  
 
 }
