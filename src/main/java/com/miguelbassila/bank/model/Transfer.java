@@ -14,10 +14,17 @@ public class Transfer {
 
   public Transfer (Account originAccount, Account destinationAccount, BigDecimal amount, Fee fee, Calendar dateSchedule){
     this.originAccount = originAccount;
-    this.destinationAccount = destinationAccount;
-    this.amount = amount;
+    this.destinationAccount = destinationAccount; 
+    
+    if(verifyAmountExceptions(amount)){
+      this.amount = amount;
+    }
+    
     this.fee = fee;
-    this.dateSchedule = dateSchedule;
+    
+    if (verifyDateExcepetion(dateSchedule)){
+      this.dateSchedule = dateSchedule;
+    }
   }
 
   public Account getOriginAccount() {
@@ -45,34 +52,35 @@ public class Transfer {
   }
   
   public void send(){
-    verifyAmountExceptions();
-    verifyDateExcepetion();
-    
     this.originAccount.withdraw(this.amount);
     this.destinationAccount.deposit(this.amount);
     this.originAccount.withdraw(calculateFee());
   }
 
-  private void verifyDateExcepetion() {
+  private boolean verifyDateExcepetion(Calendar dateSchedule) {
     Calendar today = new GregorianCalendar();
     
-    if (this.dateSchedule.compareTo(today) == -1){
+    if (dateSchedule.compareTo(today) == -1){
       throw new IllegalArgumentException("Date schedule can not be in the past");
     }
+    
+    return true;
   }
 
-  private void verifyAmountExceptions() {
-    if (this.amount.compareTo(this.originAccount.getBalance()) == 1){
+  private boolean verifyAmountExceptions(BigDecimal amount) {
+    if (amount.compareTo(this.originAccount.getBalance()) == 1){
       throw new IllegalArgumentException("Amount can not be greater than balance");
     }
     
-    if (this.amount.compareTo(BigDecimal.ZERO) == -1) {
+    if (amount.compareTo(BigDecimal.ZERO) == -1) {
       throw new IllegalArgumentException("Amount can not be negative");
     }
     
-    if (this.amount.compareTo(BigDecimal.ZERO) == 0) {
+    if (amount.compareTo(BigDecimal.ZERO) == 0) {
       throw new IllegalArgumentException("Amount can not be zero");
     }
+    
+    return true;
   }
 
 }
