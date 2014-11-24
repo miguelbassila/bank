@@ -7,7 +7,7 @@
   <meta name="description" content="Our Bank Website">
   <meta name="author" content="Miguel Bassila">
 
-  <title>Our Bank</title>
+  <title>Our Bank - Sign Up</title>
 
   <!-- CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
@@ -32,12 +32,19 @@
         </div> <!-- masthead clearfix close -->
         
         <div class="inner cover">
-          <h1 class="cover-heading">Transfers have never been so easier</h1>
-          <p class="lead">Our Bank is a flexible platform for sending money across banks paying only an honest fee for each transaction.</p>
-          <p class="lead">
-            <a href="${linkTo[SignupController].signup}" class="btn btn-lg btn-default btn-signup">Sign up</a>
-            <a href="#" class="btn btn-lg btn-default">Log in</a>
-          </p>
+          <h1 class="cover-heading">Sign Up</h1>
+          
+          <label for="inputEmail" class="sr-only">Username</label>
+          <input type="text" id="inputEmail" class="form-control" placeholder="Username" required autofocus>
+          
+          <label for="inputPassword" class="sr-only">password</label>
+          <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+          <label for="inputPassword" class="sr-only">account number</label>
+          <input type="text" id="inputPassword" class="form-control" placeholder="Account number" required>
+          <label for="inputPassword" class="sr-only">initial balance</label>
+          <input type="text" id="inputPassword" class="form-control" placeholder="Initial balance" required>
+          <button type="submit" class="btn btn-default">Sign in</button>
+          
         </div> <!-- inner cover close -->
         
       </div> <!-- cover-container close -->
