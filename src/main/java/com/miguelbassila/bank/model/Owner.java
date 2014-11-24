@@ -3,6 +3,7 @@ package com.miguelbassila.bank.model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Owner {
@@ -11,6 +12,7 @@ public class Owner {
   private Long id;
   private String login;
   private String password;
+  @OneToOne
   private Account account;
   
   public Owner(String login, String password, Account account) {
@@ -19,6 +21,14 @@ public class Owner {
     this.account = account;
   }
   
+  public Long getId() {
+    return id;
+  }
+
+  public void setId(Long id) {
+    this.id = id;
+  }
+
   public String getLogin() {
     return login;
   }
