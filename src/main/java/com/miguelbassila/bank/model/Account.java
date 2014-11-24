@@ -3,8 +3,15 @@ package com.miguelbassila.bank.model;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class Account {
   
+  @Id @GeneratedValue
+  private Long id;
   private String number;
   private BigDecimal balance;
 

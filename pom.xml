@@ -39,6 +39,30 @@
 			<version>4.11</version>
 			<scope>test</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>4.3.7.Final</version>
+		</dependency>
+
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.34</version>
+		</dependency>
+
+		<dependency>
+			<groupId>br.com.caelum.vraptor</groupId>
+			<artifactId>vraptor-jpa</artifactId>
+			<version>4.0.2</version> <!-- ou a última versão disponível -->
+		</dependency>
+
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
 	</dependencies>
 
 	<build>
