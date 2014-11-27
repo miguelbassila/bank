@@ -4,6 +4,7 @@ import javax.inject.Inject;
 
 import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Path;
+import br.com.caelum.vraptor.Result;
 
 import com.miguelbassila.bank.dao.AccountDAO;
 import com.miguelbassila.bank.dao.OwnerDAO;
@@ -29,8 +30,12 @@ public class SignupController {
     System.out.println("Signup form");
   }
   
-  public void save(Owner owner, Account account){
-        
+  public void save(Owner owner, Account account, Result result){
+System.out.println("Saving");
+  }
+  
+  public void confirm(){
+    System.out.println("Signup successfully");
   }
 
 }
