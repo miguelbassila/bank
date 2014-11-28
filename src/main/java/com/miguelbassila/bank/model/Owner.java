@@ -1,5 +1,6 @@
 package com.miguelbassila.bank.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -12,13 +13,16 @@ public class Owner {
   private Long id;
   private String login;
   private String password;
-  @OneToOne
+  @OneToOne(cascade=CascadeType.ALL)
   private Account account;
   
   public Owner(String login, String password, Account account) {
     this.login = login;
     this.password = password;
     this.account = account;
+  }
+  
+  public Owner() {
   }
   
   public Long getId() {

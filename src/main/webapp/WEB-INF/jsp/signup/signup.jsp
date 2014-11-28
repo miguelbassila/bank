@@ -35,16 +35,16 @@
           <h1 class="cover-heading">Sign Up</h1>
           <form class="form-signup" method="post" role="form" action="${pageContext.request.contextPath}/signup/save">
             <label for="inputUsername" class="sr-only">Username</label>
-            <input title="owner.login" type="text" id="inputUsername" class="form-control input-custom" placeholder="Username" required autofocus> 
+            <input name="owner.login" type="text" id="inputUsername" class="form-control input-custom" placeholder="Username" required autofocus> 
             
             <label for="inputPassword" class="sr-only">Password</label> 
-            <input title="owner.password" type="password" id="inputPassword" class="form-control input-custom" placeholder="Password" required> 
+            <input name="owner.password" type="password" id="inputPassword" class="form-control input-custom" placeholder="Password" required> 
             
             <label for="inputAccountNumber" class="sr-only">account number</label> 
-            <input title="account.number" type="text" id="inputAccountNumber" class="form-control input-custom" placeholder="Account number" required> 
+            <input name="owner.account.number" type="text" id="inputAccountNumber" class="form-control input-custom" placeholder="Account number" required> 
             
             <label for="inputBalance" class="sr-only">initial balance</label>
-            <input title="account.balance" type="text" id="inputBalance" class="form-control input-custom" placeholder="Initial balance" required>
+            <input name="owner.account.balance" type="text" id="inputBalance" class="form-control input-custom" placeholder="Initial balance" required>
 
             <button class="btn btn-lg btn-primary btn-block btn-signup" type="submit">Sign up</button>
           </form>
