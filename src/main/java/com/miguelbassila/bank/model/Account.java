@@ -6,12 +6,14 @@ import java.math.RoundingMode;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.Pattern;
 
 @Entity
 public class Account {
   
   @Id @GeneratedValue
   private Long id;
+  @Pattern(regexp="[0-9]{5}-[0-9]")
   private String number;
   private BigDecimal balance;
 
