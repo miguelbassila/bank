@@ -36,7 +36,7 @@
           <p class="lead">Our Bank is a flexible platform for sending money across banks paying only an honest fee for each transaction.</p>
           <p class="lead">
             <a href="${linkTo[SignupController].signup}" class="btn btn-lg btn-default btn-signup">Sign up</a>
-            <a href="#" class="btn btn-lg btn-default">Log in</a>
+            <a href="${linkTo[LoginController].login}" class="btn btn-lg btn-default">Log in</a>
           </p>
         </div> <!-- inner cover close -->
         

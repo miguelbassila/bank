@@ -63,13 +63,13 @@ body {
 	margin-left: auto;
 }
 
-.form-signup {
+.form {
 	max-width: 330px;
 	padding: 15px;
 	margin: 0 auto;
 }
 
-.form-signup .form-control {
+.form .form-control {
 	position: relative;
 	height: auto;
 	-webkit-box-sizing: border-box;

@@ -7,7 +7,7 @@
   <meta name="description" content="Our Bank Website">
   <meta name="author" content="Miguel Bassila">
   
-  <title>Our Bank - Sign Up</title>
+  <title>Our Bank - Login</title>
   
   <!-- CSS -->
   <link rel="stylesheet"  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
@@ -32,21 +32,15 @@
         </div><!-- masthead clearfix close -->
 
         <div class="inner cover">
-          <h1 class="cover-heading">Sign Up</h1>
-          <form class="form" method="post" role="form" action="${pageContext.request.contextPath}/signup/save">
+          <h1 class="cover-heading">Sign In</h1>
+          <form class="form" method="post" role="form" action="${pageContext.request.contextPath}/login/login">
             <label for="inputUsername" class="sr-only">Username</label>
             <input name="owner.login" type="text" id="inputUsername" class="form-control input-custom" placeholder="Username" required autofocus> 
             
             <label for="inputPassword" class="sr-only">Password</label> 
             <input name="owner.password" type="password" id="inputPassword" class="form-control input-custom" placeholder="Password" required> 
             
-            <label for="inputAccountNumber" class="sr-only">account number</label> 
-            <input name="owner.account.number" type="text" id="inputAccountNumber" class="form-control input-custom" placeholder="Account number" required> 
-            
-            <label for="inputBalance" class="sr-only">initial balance</label>
-            <input name="owner.account.balance" type="text" id="inputBalance" class="form-control input-custom" placeholder="Initial balance" required>
-
-            <button class="btn btn-lg btn-primary btn-block btn-signup" type="submit">Sign up</button>
+            <button class="btn btn-lg btn-primary btn-block btn-signup" type="submit">Login</button>
           </form>
         </div><!-- inner cover close -->
 
