@@ -2,6 +2,7 @@ package com.miguelbassila.bank.dao;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.transaction.Transactional;
 
 import com.miguelbassila.bank.model.Owner;
@@ -23,6 +24,18 @@ public class OwnerDAO {
       this.manager.persist(owner);
     } else {
       this.manager.merge(owner);
+    }
+  }
+
+  public Owner searchOwnerWithPassword(String login, String password) {
+    try {
+      return this.manager
+          .createQuery("select o from Owner o where o.login = :login and o.password = :password", Owner.class)
+          .setParameter("login", login)
+          .setParameter("password", password)
+          .getSingleResult();
+    } catch (NoResultException e) {
+      return null;
     }
   }
 

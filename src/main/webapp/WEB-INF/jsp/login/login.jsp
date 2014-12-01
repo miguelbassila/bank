@@ -33,12 +33,12 @@
 
         <div class="inner cover">
           <h1 class="cover-heading">Sign In</h1>
-          <form class="form" method="post" role="form" action="${pageContext.request.contextPath}/login/login">
+          <form class="form" method="post" role="form" action="${pageContext.request.contextPath}/login">
             <label for="inputUsername" class="sr-only">Username</label>
-            <input name="owner.login" type="text" id="inputUsername" class="form-control input-custom" placeholder="Username" required autofocus> 
+            <input name="login" type="text" id="inputUsername" class="form-control input-custom" placeholder="Username" required autofocus> 
             
             <label for="inputPassword" class="sr-only">Password</label> 
-            <input name="owner.password" type="password" id="inputPassword" class="form-control input-custom" placeholder="Password" required> 
+            <input name="password" type="password" id="inputPassword" class="form-control input-custom" placeholder="Password" required> 
             
             <button class="btn btn-lg btn-primary btn-block btn-signup" type="submit">Login</button>
           </form>
