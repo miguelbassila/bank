@@ -44,7 +44,7 @@
               <span class="caret"></span>
             </button>
             <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Logout</a></li>
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="${linkTo[LoginController].logout}">Logout</a></li>
             </ul>
           </div>
         </div>
@@ -60,13 +60,13 @@
     
           <form class="form" method="post" role="form" action="${pageContext.request.contextPath}/signup/save">
             <label for="accountNumber" class="sr-only">Account number</label>
-            <input name="owner.login" type="text" id="accountNumber" class="form-control input-custom" placeholder="Account number" required autofocus> 
+            <input name="accountNumber" type="text" id="accountNumber" class="form-control input-custom" placeholder="Account number" required autofocus> 
             
             <label for="amount" class="sr-only">Amount</label> 
-            <input name="owner.password" type="text" id="amount" class="form-control input-custom" placeholder="Amount" required> 
+            <input name="transfer.amount" type="text" id="amount" class="form-control input-custom" placeholder="Amount" required> 
             
             <label for="dateSchedule" class="sr-only">Date schedule</label> 
-            <input name="owner.account.number" type="text" id="dateSchedule" class="form-control input-custom" placeholder="Date schedule" required> 
+            <input name="dateSchedule" type="text" id="dateSchedule" class="form-control input-custom" placeholder="Date schedule" required> 
             
             <label for="feeType" class="sr-only">Fee type</label>
             <select name="feeType" id="feeType" class="form-control" class="form-control input-custom select-custom" required >
@@ -92,8 +92,9 @@
   <script src="${pageContext.request.contextPath}/js/jquery.mask.min.js"></script>
   <script>
 	jQuery(function($){
-	       $("#accountNumber").mask("99999-9");
-	       $("#amount").mask("000.000.000.000.000,00");
+       $("#accountNumber").mask("99999-9");
+       $("#amount").mask("#.##0,00", {reverse: true});
+       $("#dateSchedule").mask('00/00/0000');
 	});
    </script>
 </body>
