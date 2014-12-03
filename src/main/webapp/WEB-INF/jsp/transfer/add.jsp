@@ -59,22 +59,22 @@
         <div class="inner cover">
     
           <form class="form" method="post" role="form" action="${pageContext.request.contextPath}/signup/save">
-            <label for="inputUsername" class="sr-only">Account number</label>
-            <input name="owner.login" type="text" id="inputUsername" class="form-control input-custom" placeholder="Account number" required autofocus> 
+            <label for="accountNumber" class="sr-only">Account number</label>
+            <input name="owner.login" type="text" id="accountNumber" class="form-control input-custom" placeholder="Account number" required autofocus> 
             
-            <label for="inputPassword" class="sr-only">Amount</label> 
-            <input name="owner.password" type="password" id="inputPassword" class="form-control input-custom" placeholder="Amount" required> 
+            <label for="amount" class="sr-only">Amount</label> 
+            <input name="owner.password" type="text" id="amount" class="form-control input-custom" placeholder="Amount" required> 
             
-            <label for="inputAccountNumber" class="sr-only">Date schedule</label> 
-            <input name="owner.account.number" type="text" id="inputAccountNumber" class="form-control input-custom" placeholder="Date schedule" required> 
+            <label for="dateSchedule" class="sr-only">Date schedule</label> 
+            <input name="owner.account.number" type="text" id="dateSchedule" class="form-control input-custom" placeholder="Date schedule" required> 
             
-            <label for="inputBalance" class="sr-only">Fee type</label>
-            <select class="form-control" class="form-control input-custom select-custom" >
+            <label for="feeType" class="sr-only">Fee type</label>
+            <select name="feeType" id="feeType" class="form-control" class="form-control input-custom select-custom" required >
               <option>Fee type</option>
-              <option>A</option>
-              <option>B</option>
-              <option>C</option>
-              <option>D</option>
+              <option value="A">A</option>
+              <option value="B">B</option>
+              <option value="C">C</option>
+              <option value="D">D</option>
             </select>
             
             <br>
@@ -89,5 +89,12 @@
   <!-- JavaScripts -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+  <script src="${pageContext.request.contextPath}/js/jquery.mask.min.js"></script>
+  <script>
+	jQuery(function($){
+	       $("#accountNumber").mask("99999-9");
+	       $("#amount").mask("000.000.000.000.000,00");
+	});
+   </script>
 </body>
 </html>
