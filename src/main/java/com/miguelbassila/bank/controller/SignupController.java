@@ -6,6 +6,7 @@ import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Result;
 
+import com.miguelbassila.bank.business.OwnerLogged;
 import com.miguelbassila.bank.dao.OwnerDAO;
 import com.miguelbassila.bank.model.Owner;
 
@@ -13,10 +14,12 @@ import com.miguelbassila.bank.model.Owner;
 public class SignupController {
   
   private OwnerDAO ownerDAO;
+  private OwnerLogged logged;
   
   @Inject
-  public SignupController(OwnerDAO ownerDAO) {
+  public SignupController(OwnerDAO ownerDAO, OwnerLogged logged) {
     this.ownerDAO = ownerDAO;
+    this.logged = logged;
   }
   
   public SignupController() {}
@@ -28,7 +31,9 @@ public class SignupController {
   
   public void save(Owner owner, Result result){
     ownerDAO.add(owner);
-    result.redirectTo(this).confirm();;
+    logged.login(owner);
+    
+    result.redirectTo(TransferController.class).list();
   }
   
   public void confirm(){
