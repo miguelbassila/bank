@@ -6,7 +6,10 @@ import br.com.caelum.vraptor.Controller;
 public class TransferController {
 
   public void list() {
-    System.out.println("All right");
+    System.out.println("Listing all transfers");
+  }
+  
+  public void add(){
     
   }
 
